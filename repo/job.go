@@ -4,10 +4,12 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"realjobs/models"
 
 	"os"
 
 	"github.com/joho/godotenv"
+	"github.com/lib/pq"
 )
 
 var db *sql.DB
@@ -31,4 +33,20 @@ func ConnectToDB() {
 	}
 
 	fmt.Println("succesfuly connected to database")
+}
+
+func CreateJob(j models.Job) error {
+	ConnectToDB()
+	insertStmt := `INSERT INTO job(logo, jobtitle, location, description, howtoApply, requirements,   
+		experience, address, categories, jobtypes, salary, submissiondate, deadline) 
+				   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`
+
+	_, err := db.Exec(insertStmt, j.Logo, j.JobTitle, j.Location, j.Description, j.HowToApply, j.Requirements, j.Experience,
+		j.Address, pq.Array(j.Categories), pq.Array(j.JobTypes), j.Salary, j.SubmissionDate, j.Deadline)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

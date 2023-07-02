@@ -3,13 +3,16 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"realjobs/handlers"
 	"realjobs/models"
+
 	"time"
 
 	"github.com/gin-gonic/gin"
 )
+
 const (
-    DDMMYYYY = "02/01/2006"
+	DDMMYYYY = "02/01/2006"
 )
 
 func main() {
@@ -39,9 +42,9 @@ func main() {
 
 		job := models.Job{Logo: "", JobTitle: "Digital Marketing Executive", Location: "Sacramento, California", JobTypes: models.JobTypes{},
 			Deadline: models.Date(deadline), Description: "Description", HowToApply: "How to Apply", Requirements: "Requirements", Experience: "3",
-			Address:    "Demo Address #8901 Marmora Road Chi Minh City, Vietnam",
-			Categories: models.Category{},
-			Salary:     600.700,
+			Address:        "Demo Address #8901 Marmora Road Chi Minh City, Vietnam",
+			Categories:     models.Category{},
+			Salary:         600.700,
 			SubmissionDate: time.Now(),
 		}
 
@@ -54,5 +57,9 @@ func main() {
 		})
 	})
 
-	router.Run(":8080")
+	router.GET("/add_job", handlers.AddJob)
+
+	router.POST("/add_job", handlers.CreateJob)
+
+	router.Run(":8081")
 }
