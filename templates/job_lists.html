@@ -1,0 +1,269 @@
+{{template "header.html" }}
+<!-- Content -->
+<div class="page-content bg-white">
+  <!-- inner page banner -->
+  <div
+    class="dez-bnr-inr overlay-black-middle"
+    style="background-image: url(assets/images/banner/bnr1.jpg)"
+  >
+    <div class="container">
+      <div class="dez-bnr-inr-entry">
+        <h1 class="text-white">Browse Jobs</h1>
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+          <ul class="list-inline">
+            <li><a href="/">Home</a></li>
+            <li>Browse Jobs</li>
+          </ul>
+        </div>
+        <!-- Breadcrumb row END -->
+      </div>
+    </div>
+  </div>
+  <!-- inner page banner END -->
+  <!-- contact area -->
+  <div class="content-block">
+    <!-- Browse Jobs -->
+    <div class="section-full bg-white browse-job content-inner-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 col-lg-8">
+            <h5 class="widget-title font-weight-700 text-uppercase">
+            {{.job}}
+              Recent Jobs
+            </h5>
+            <ul class="post-job-bx">
+              <li>
+                <a href="#">
+                  <div class="d-flex m-b30">
+                    <div class="job-post-company">
+                      <span><img src="assets/images/logo/icon1.png" /></span>
+                    </div>
+                    <div class="job-post-info">
+                      <h4>Digital Marketing Executive</h4>
+                      <ul>
+                        <li>
+                          <i class="fa fa-map-marker"></i> Sacramento,
+                          California
+                        </li>
+                        <li><i class="fa fa-bookmark-o"></i> Full Time</li>
+                        <li>
+                          <i class="fa fa-clock-o"></i> Published 11 months ago
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="d-flex">
+                    <div class="job-time mr-auto">
+                      <span>Full Time</span>
+                    </div>
+                    <div class="salary-bx">
+                      <span>$1200 - $ 2500</span>
+                    </div>
+                  </div>
+                  <span class="post-like fa fa-heart-o"></span>
+                </a>
+              </li>
+            </ul>
+            <div class="pagination-bx m-t30">
+              <ul class="pagination">
+                <li class="previous">
+                  <a href="#"><i class="ti-arrow-left"></i> Prev</a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="next">
+                  <a href="#">Next <i class="ti-arrow-right"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4">
+            <div class="sticky-top">
+              <div class="clearfix m-b30">
+                <h5 class="widget-title font-weight-700 text-uppercase">
+                  Keywords
+                </h5>
+                <div class="">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search"
+                    name="search"
+                    value="{{.search}}"
+                  />
+                </div>
+              </div>
+              <div class="clearfix m-b10">
+                <h5 class="widget-title font-weight-700 m-t0 text-uppercase">
+                  Location
+                </h5>
+                <input
+                  type="text"
+                  class="form-control m-b30"
+                  placeholder="Location"
+                  name="location"
+                  value="{{.location}}"
+                />
+                {{/*
+                <div class="input-group m-b20">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="120"
+                    name="dis"
+                    value="{{.location}}"
+                  />
+                  <select>
+                    <option>Km</option>
+                    <option>miles</option>
+                  </select>
+                </div>
+                */}}
+              </div>
+              <div class="clearfix m-b30">
+                <h5 class="widget-title font-weight-700 text-uppercase">
+                  Job type
+                </h5>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                    <div class="product-brand">
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="jobtype1"
+                          name="jobs[]"
+                        />
+                        <label class="custom-control-label" for="jobtype1"
+                          >Freelance</label
+                        >
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="jobtype2"
+                          name="jobs[]"
+                        />
+                        <label class="custom-control-label" for="jobtype2"
+                          >Full Time</label
+                        >
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="jobtype3"
+                          name="jobs[]"
+                        />
+                        <label class="custom-control-label" for="jobtype3"
+                          >Internship</label
+                        >
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="jobtype4"
+                          name="jobs[]"
+                        />
+                        <label class="custom-control-label" for="jobtype4"
+                          >Part Time</label
+                        >
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="jobtype5"
+                          name="jobs[]"
+                        />
+                        <label class="custom-control-label" for="jobtype5"
+                          >Temporary</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                    <div class="product-brand">
+                      <div class="custom-control custom-checkbox">
+                        <div class="custom-control custom-checkbox">
+                          <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="jobtype6"
+                            name="jobs[]"
+                          />
+                          <label class="custom-control-label" for="jobtype6"
+                            >Hybrid</label
+                          >
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="jobtype7"
+                            name="jobs[]"
+                          />
+                          <label class="custom-control-label" for="jobtype7"
+                            >Onsite</label
+                          >
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="jobtype8"
+                            name="jobs[]"
+                          />
+                          <label class="custom-control-label" for="jobtype8"
+                            >Remote</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix">
+                  <h5 class="widget-title font-weight-700 text-uppercase">
+                    Category
+                  </h5>
+                  <select name="jobCategory" value{{.jobCategory}}>
+                    <option selected>Select Job Category</option>
+                    <option>Food Services</option>
+                    <option>Construction</option>
+                    <option>Computer Programmer</option>
+                    <option>Management</option>
+                    <option>Electrician</option>
+                    <option>Administrative assistant</option>
+                    <option>Technician</option>
+                    <option>Teacher</option>
+                    <option>Architect</option>
+                    <option>Finance</option>
+                    <option>Web Developer</option>
+                    <option>Sales</option>
+                    <option>Engineering</option>
+                    <option>Police officer</option>
+                    <option>Data Analyst</option>
+                    <option>Data Science</option>
+                    <option>Data Engineering</option>
+                    <option>Fullstack Developer</option>
+                    <option>Backend Developer</option>
+                    <option>Frontend Developer</option>
+                    <option>Graphics Designer</option>
+                    <option>Carpenter</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Browse Jobs END -->
+    </div>
+  </div>
+  <!-- Content END-->
+  {{template "footer.html" }}
+</div>
