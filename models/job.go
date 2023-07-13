@@ -20,7 +20,7 @@ type Job struct {
 	JobTypes       JobTypes   `json:"job_types"`
 	Salary         float64    `json:"salary"`
 	SubmissionDate time.Time  `json:"submission_date"`
-	Deadline       time.Time       `json:"deadline" binding:"required"`
+	Deadline       time.Time  `json:"deadline" binding:"required"`
 }
 
 type JobTypes struct {
@@ -30,7 +30,8 @@ type Categories struct {
 	Categories []string `json:"categories" form:"categories[]"`
 }
 
-var JobCategories = map[int]string{1: "Fashion",
+var JobCategories = map[int]string{
+	1:  "Fashion",
 	2:  "Construction",
 	3:  "Management",
 	4:  "Sales",
@@ -70,7 +71,6 @@ var JobTypesList = map[int]string{
 	6: "Parttime",
 }
 
-// fmt.Println()
 func (h Job) Value() (driver.Value, error) {
 	return json.Marshal(h)
 }

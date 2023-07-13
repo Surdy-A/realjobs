@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"realjobs/models"
@@ -23,27 +22,28 @@ func CreateJob(c *gin.Context) {
 	address := c.PostForm("address")
 	price := c.PostForm("salary")
 	deadline := c.PostForm("deadline")
-
 	salary, err := strconv.ParseFloat(price, 64)
+
 	if err != nil {
-		log.Println("Conversion Error 1", err)
+		log.Println("Conversion Error:", err)
 	}
 
-	// var cat models.Categories
-	// c.ShouldBind(&cat)
+	layout := "2006-01-02"
+	effectiveDate, err := time.Parse(layout, deadline)
+
+	if err != nil {
+		log.Println("Conversion Error:", err)
+	}
 
 	var jobCategories models.Categories
 	c.Bind(&jobCategories)
-
-	fmt.Println(jobCategories.Categories)
 
 	var job_types models.JobTypes
 	c.ShouldBind(&job_types)
 
 	var job models.Job
 	c.ShouldBind(&job)
-	layout := "2006-01-02"
-	effectiveDate, err := time.Parse(layout, deadline)
+
 	h := models.Job{
 		Logo:           logo,
 		JobTitle:       job_title,
@@ -60,17 +60,10 @@ func CreateJob(c *gin.Context) {
 		SubmissionDate: time.Now(),
 	}
 
-	//var db *sql.DB
 	err = repo.CreateJob(h)
 	if err != nil {
 		log.Fatal("Unable to create job:", err)
 	}
-
-	//var  []id
-	//var  v
-	// for id, v := range models.Jobs {
-	// 	id= id
-	// }
 
 	c.HTML(http.StatusOK, "add_job.html", gin.H{
 		"title": "Add Job",
