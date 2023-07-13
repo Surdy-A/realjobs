@@ -23,6 +23,8 @@ func CreateJob(c *gin.Context) {
 	price := c.PostForm("salary")
 	deadline := c.PostForm("deadline")
 	salary, err := strconv.ParseFloat(price, 64)
+	job_type := c.PostForm("job_type")
+
 
 	if err != nil {
 		log.Println("Conversion Error:", err)
@@ -38,9 +40,6 @@ func CreateJob(c *gin.Context) {
 	var jobCategories models.Categories
 	c.Bind(&jobCategories)
 
-	var job_types models.JobTypes
-	c.ShouldBind(&job_types)
-
 	var job models.Job
 	c.ShouldBind(&job)
 
@@ -54,7 +53,7 @@ func CreateJob(c *gin.Context) {
 		Experience:     experience,
 		Address:        address,
 		Categories:     jobCategories,
-		JobTypes:       job_types,
+		JobType:       job_type,
 		Salary:         salary,
 		Deadline:       effectiveDate,
 		SubmissionDate: time.Now(),
@@ -81,3 +80,18 @@ func AddJob(c *gin.Context) {
 
 	c.Redirect(http.StatusPermanentRedirect, c.Request.URL.Path)
 }
+
+func GetJobs(c *gin.Context) {
+	var j models.Job
+	jobs, err := repo.GetJobs(j)
+
+	if err != nil {
+		log.Fatal("Unable to create jobs:", err)
+	}
+
+	c.HTML(http.StatusOK, "job_lists.html", gin.H{
+		"title": "Real Jobs",
+		"jobs": jobs,
+	})
+}
+

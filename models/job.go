@@ -8,6 +8,7 @@ import (
 )
 
 type Job struct {
+	ID             string     `json:"id"`
 	Logo           string     `json:"logo"`
 	JobTitle       string     `json:"job_title"`
 	Location       string     `json:"location"`
@@ -17,7 +18,7 @@ type Job struct {
 	Experience     string     `json:"experience"`
 	Address        string     `json:"Address"`
 	Categories     Categories `json:"Categories"`
-	JobTypes       JobTypes   `json:"job_types"`
+	JobType      string   `json:"job_types"`
 	Salary         float64    `json:"salary"`
 	SubmissionDate time.Time  `json:"submission_date"`
 	Deadline       time.Time  `json:"deadline" binding:"required"`
