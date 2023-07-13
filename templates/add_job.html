@@ -1,97 +1,165 @@
 {{template "header.html" }}
-  <!-- Content -->
-    <div class="page-content bg-white">
-        <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-dark" style="background-image:url(assets/images/banner/bnr1.jpg);">
-            <div class="container">
-                <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">Add Job</h1>
-					<!-- Breadcrumb row -->
-					<div class="breadcrumb-row">
-						<ul class="list-inline">
-							<li><a href="/">Home</a></li>
-							<li>Add Job</li>
-						</ul>
-					</div>
-					<!-- Breadcrumb row END -->
-                </div>
-            </div>
+<!-- Content -->
+<div class="page-content bg-white">
+  <!-- inner page banner -->
+  <div
+    class="dez-bnr-inr overlay-black-dark"
+    style="background-image: url(assets/images/banner/bnr1.jpg)"
+  >
+    <div class="container">
+      <div class="dez-bnr-inr-entry">
+        <h1 class="text-white">Add Job</h1>
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+          <ul class="list-inline">
+            <li><a href="/">Home</a></li>
+            <li>Add Job</li>
+          </ul>
         </div>
-        <!-- inner page banner END -->
-        <!-- contact area -->
-        <div class="content-block">
-			<!-- Submit Resume -->
-			<div class="section-full bg-white submit-resume content-inner-2">
-				<div class="container">
-					<form method="post" action="/add_job" enctype="multipart/form-data">
-						<div class="form-group">
-							<label>Job Title</label>
-							<input type="text" class="form-control" placeholder="Job Title" name="job_title" value="{{.job_title}}">
-						</div>
-						<div class="form-group">
-							<label>Logo</label>
-							<input type="text" class="form-control" placeholder="Logo" name="logo" value="{{.logo}}">
-						</div>
-						<div class="form-group">
-							<label>Location</label>
-							<input type="text" class="form-control" placeholder="Location" name="location" value="{{.location}}">
-						</div>
-						<div class="form-group">
-							<label>Description</label>
-							<input type="description" class="form-control" placeholder="Description" name="description" value="{{.description}}">
-						</div>
-						<div class="form-group">
-							<label>How To Apply</label>
-							<input type="text" class="form-control" placeholder="How To Apply" name="how_to_apply" value="{{.how_to_apply}}">
-						</div>
-						<div class="form-group">
-							<label>Requirements</label>
-							<input type="text" class="form-control" placeholder="Requirements" name="requirements" value="{{.requirements}}">
-						</div>
-						<div class="form-group">
-							<label>Address</label>
-							<input type="text" class="form-control" placeholder="Address" name="address" value="{{.address}}">
-						</div>
-						<div class="form-group">
-							<label>Experience</label>
-							<input type="text" class="form-control" placeholder="Experience" name="experience" value="{{.experience}}">
-						</div>
-						<div class="form-group">
-							<label>Job Category</label>
-							<select name="category" value{{.category}}>
-								<option>Fullstack Developer</option>
-								<option>Backend Developer</option>
-								<option>Frontend Developer</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label>Job Type</label>
-							<select name="job_type" value{{.job_type}}>
-								<option>Select Job Type</option>
-								<option>Fullstack Developer</option>
-								<option>Backend Developer</option>
-								<option>Frontend Developer</option>
-							</select>
-						</div>
-						
-						<div class="form-group">
-							<label>Salary</label>
-							<input type="number" class="form-control" placeholder="Price" name="salary" value{{.sal}}>
-						</div>
-						<div class="form-group">
-							<label>Submission Date</label>
-							<input type="date" class="form-control" placeholder="Submission Date" name="submission_date" value{{.submission_date}}>
-						</div>
-						<div class="form-group">
-							<label>Job deadline</label>
-							<input type="date" class="form-control" placeholder="Job Deadline" name="deadline" value{{.deadline}}>
-						</div>
-						<button type="submit" class="site-button">Submit</button>
-					</form>
-				</div>
-			</div>
-            <!-- Submit Resume END -->
-		</div>
+        <!-- Breadcrumb row END -->
+      </div>
     </div>
-    <!-- Content END-->
+  </div>
+  <!-- inner page banner END -->
+  <!-- contact area -->
+  <div class="content-block">
+    <!-- Submit Resume -->
+    <div class="section-full bg-white submit-resume content-inner-2">
+      <div class="container">
+        <form method="post" action="/add_job" enctype="multipart/form-data">
+          <div class="form-group">
+            <label>Job Title</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Job Title"
+              name="job_title"
+              value="{{.job_title}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Logo</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Logo"
+              name="logo"
+              value="{{.logo}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Location"
+              name="location"
+              value="{{.location}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <input
+              type="description"
+              class="form-control"
+              placeholder="Description"
+              name="description"
+              value="{{.description}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>How To Apply</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="How To Apply"
+              name="how_to_apply"
+              value="{{.how_to_apply}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Requirements</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Requirements"
+              name="requirements"
+              value="{{.requirements}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Address"
+              name="address"
+              value="{{.address}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Experience</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Experience"
+              name="experience"
+              value="{{.experience}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Job Category</label>
+            <select name="categories[]" multiple="multiple">
+              {{ range $key, $value := .job_categories }}
+              <option id="{{$key}}" value="{{$value}}">{{$value}}</option>
+              {{ end }}
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Job Type</label>
+            <select name="job_types[]" multiple="multiple">
+              {{ range $key, $value := .job_types_list }}
+              <option id="{{$key}}" value="{{$value}}">{{$value}}</option>
+              {{ end }}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Salary</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Price"
+              name="salary"
+              value{{.salary}}
+            />
+          </div>
+          <div class="form-group">
+            <label>Submission Date</label>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="Submission Date"
+              name="submission_date"
+              value{{.submission_date}}
+            />
+          </div>
+          <div class="form-group">
+            <label>Job deadline</label>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="Job Deadline"
+              name="deadline"
+              value{{.deadline}}
+            />
+          </div>
+          <button type="submit" class="site-button">Submit</button>
+        </form>
+      </div>
+    </div>
+    <!-- Submit Resume END -->
+  </div>
+</div>
+<!-- Content END-->
 {{template "footer.html" }}

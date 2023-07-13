@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"realjobs/models"
@@ -20,15 +21,21 @@ func CreateJob(c *gin.Context) {
 	requirements := c.PostForm("requirements")
 	experience := c.PostForm("experience")
 	address := c.PostForm("address")
-	price := c.PostForm("price")
-	//	deadline := c.PostForm("deadline")
+	price := c.PostForm("salary")
+	deadline := c.PostForm("deadline")
 
 	salary, err := strconv.ParseFloat(price, 64)
 	if err != nil {
 		log.Println("Conversion Error 1", err)
 	}
-	var cat models.Category
-	c.ShouldBind(&cat)
+
+	// var cat models.Categories
+	// c.ShouldBind(&cat)
+
+	var jobCategories models.Categories
+	c.Bind(&jobCategories)
+
+	fmt.Println(jobCategories.Categories)
 
 	var job_types models.JobTypes
 	c.ShouldBind(&job_types)
@@ -45,10 +52,10 @@ func CreateJob(c *gin.Context) {
 		Requirements: requirements,
 		Experience:   experience,
 		Address:      address,
-		Categories:   cat,
+		Categories:   jobCategories,
 		JobTypes:     job_types,
 		Salary:       salary,
-		//Deadline:       models.Date{deadline},
+		Deadline:     deadline,
 		SubmissionDate: time.Now(),
 	}
 
@@ -58,16 +65,25 @@ func CreateJob(c *gin.Context) {
 		log.Fatal("Unable to create job:", err)
 	}
 
-	c.HTML(http.StatusOK, "add_job.tmpl", gin.H{
+	//var  []id
+	//var  v
+	// for id, v := range models.Jobs {
+	// 	id= id
+	// }
+
+	c.HTML(http.StatusOK, "add_job.html", gin.H{
 		"title": "Add Job",
 	})
 
-	c.Redirect(http.StatusPermanentRedirect, c.Request.URL.Path)
+	c.Redirect(http.StatusPermanentRedirect, "/")
 }
 
 func AddJob(c *gin.Context) {
 
-	c.HTML(http.StatusOK, "add_job.html", gin.H{})
+	c.HTML(http.StatusOK, "add_job.html", gin.H{
+		"job_categories": models.JobCategories,
+		"job_types_list":      models.JobTypesList,
+	})
 
 	c.Redirect(http.StatusPermanentRedirect, c.Request.URL.Path)
 }

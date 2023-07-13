@@ -43,7 +43,7 @@ func main() {
 		job := models.Job{Logo: "", JobTitle: "Digital Marketing Executive", Location: "Sacramento, California", JobTypes: models.JobTypes{},
 			Deadline: models.Date(deadline), Description: "Description", HowToApply: "How to Apply", Requirements: "Requirements", Experience: "3",
 			Address:        "Demo Address #8901 Marmora Road Chi Minh City, Vietnam",
-			Categories:     models.Category{},
+			Categories:     models.Categories{},
 			Salary:         600.700,
 			SubmissionDate: time.Now(),
 		}
