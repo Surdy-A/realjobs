@@ -42,20 +42,21 @@ func CreateJob(c *gin.Context) {
 
 	var job models.Job
 	c.ShouldBind(&job)
-
+	layout := "2006-01-02"
+	effectiveDate, err := time.Parse(layout, deadline)
 	h := models.Job{
-		Logo:         logo,
-		JobTitle:     job_title,
-		Location:     location,
-		Description:  description,
-		HowToApply:   how_to_apply,
-		Requirements: requirements,
-		Experience:   experience,
-		Address:      address,
-		Categories:   jobCategories,
-		JobTypes:     job_types,
-		Salary:       salary,
-		Deadline:     deadline,
+		Logo:           logo,
+		JobTitle:       job_title,
+		Location:       location,
+		Description:    description,
+		HowToApply:     how_to_apply,
+		Requirements:   requirements,
+		Experience:     experience,
+		Address:        address,
+		Categories:     jobCategories,
+		JobTypes:       job_types,
+		Salary:         salary,
+		Deadline:       effectiveDate,
 		SubmissionDate: time.Now(),
 	}
 
@@ -82,7 +83,7 @@ func AddJob(c *gin.Context) {
 
 	c.HTML(http.StatusOK, "add_job.html", gin.H{
 		"job_categories": models.JobCategories,
-		"job_types_list":      models.JobTypesList,
+		"job_types_list": models.JobTypesList,
 	})
 
 	c.Redirect(http.StatusPermanentRedirect, c.Request.URL.Path)

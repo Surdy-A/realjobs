@@ -20,7 +20,7 @@ type Job struct {
 	JobTypes       JobTypes   `json:"job_types"`
 	Salary         float64    `json:"salary"`
 	SubmissionDate time.Time  `json:"submission_date"`
-	Deadline       Date       `json:"deadline" binding:"required"`
+	Deadline       time.Time       `json:"deadline" binding:"required"`
 }
 
 type JobTypes struct {

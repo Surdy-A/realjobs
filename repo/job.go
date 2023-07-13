@@ -38,12 +38,12 @@ func ConnectToDB() {
 func CreateJob(j models.Job) error {
 	ConnectToDB()
 	insertStmt := `INSERT INTO job(logo, jobtitle, location, description, howtoApply, 
-		requirements, experience, address, categories, jobtypes, salary, submissiondate) 
-		VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`
+		requirements, experience, address, categories, jobtypes, salary, submissiondate, deadline) 
+		VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12, $13)`
 
 	_, err := db.Exec(insertStmt, j.Logo, j.JobTitle, j.Location, j.Description, j.HowToApply, 
 		j.Requirements, j.Experience, j.Address, pq.Array(j.Categories.Categories), 
-		pq.Array(j.JobTypes.JobTypes), j.Salary, j.SubmissionDate)
+		pq.Array(j.JobTypes.JobTypes), j.Salary, j.SubmissionDate, j.Deadline)
 
 	if err != nil {
 		return err
