@@ -15,10 +15,10 @@ type Job struct {
 	Description    string     `json:"description"`
 	HowToApply     string     `json:"how_to_apply"`
 	Requirements   string     `json:"requirements"`
-	Experience     string     `json:"experience"`
+	Experience     int64      `json:"experience"`
 	Address        string     `json:"Address"`
 	Categories     Categories `json:"Categories"`
-	JobType      string   `json:"job_types"`
+	JobType        string     `json:"job_types"`
 	Salary         float64    `json:"salary"`
 	SubmissionDate time.Time  `json:"submission_date"`
 	Deadline       time.Time  `json:"deadline" binding:"required"`

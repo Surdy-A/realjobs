@@ -57,6 +57,7 @@ func main() {
 
 	router.POST("/add_job", handlers.CreateJob)
 	router.GET("/jobs", handlers.GetJobs)
+	router.GET("/job_:id", handlers.GetJob)
 
 	router.Run(":8081")
 }
