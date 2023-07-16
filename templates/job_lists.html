@@ -23,20 +23,19 @@
   <!-- inner page banner END -->
   <!-- contact area -->
   <div class="content-block">
-   
     <!-- Browse Jobs -->
     <div class="section-full bg-white browse-job content-inner-2">
       <div class="container">
-       <h5 class="widget-title font-weight-700 text-uppercase text-center">
-      Recent Jobs
-    </h5>
+        <h5 class="widget-title font-weight-700 text-uppercase text-center">
+          Recent Jobs
+        </h5>
         <div class="row">
           {{ range .jobs }}
           <div class="col-xl-9 col-lg-8">
             <br />
             <ul class="post-job-bx">
               <li>
-                <a href="/job/{{.ID}}">
+                <a href="/job_{{.ID}}">
                   <div class="d-flex m-b30">
                     <div class="job-post-company">
                       <span><img src="assets/images/logo/icon1.png" /></span>
@@ -49,14 +48,17 @@
                         <li><i class="fa fa-bookmark-o"></i> {{.JobType}}</li>
                         <li>
                           {{/* {{end}} */}}
-                          <i class="fa fa-clock-o"></i> {{.SubmissionDate}}
+                          <i class="fa fa-clock-o"></i> {{.SubmissionDate.Format
+                          "02-Jan-2006"}}
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="d-flex">
                     <div class="job-time mr-auto">
-                      <span>{{.Categories}}</span>
+                      {{range .Categories.Categories}}
+                      <span>{{.}},</span>
+                      {{end}}
                     </div>
                     <div class="salary-bx">
                       <span>${{.Salary}}</span>

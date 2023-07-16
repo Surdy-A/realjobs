@@ -11,14 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Home(c *gin.Context) {
-
-	c.HTML(http.StatusOK, "index.html", gin.H{
-		"title": "Home-RealJobs",
-	})
-}
-
-func CreateJob(c *gin.Context) {
+func CreateCandidate(c *gin.Context) {
 	logo := c.PostForm("logo")
 	job_title := c.PostForm("job_title")
 	location := c.PostForm("location")
@@ -83,7 +76,7 @@ func CreateJob(c *gin.Context) {
 	c.Redirect(http.StatusPermanentRedirect, "/")
 }
 
-func AddJob(c *gin.Context) {
+func AddCandidate(c *gin.Context) {
 
 	c.HTML(http.StatusOK, "add_job.html", gin.H{
 		"job_categories": models.JobCategories,
@@ -93,7 +86,7 @@ func AddJob(c *gin.Context) {
 	c.Redirect(http.StatusPermanentRedirect, c.Request.URL.Path)
 }
 
-func GetJobs(c *gin.Context) {
+func GetCandidates(c *gin.Context) {
 	var j models.Job
 	jobs, err := repo.GetJobs(j)
 
@@ -107,7 +100,7 @@ func GetJobs(c *gin.Context) {
 	})
 }
 
-func GetJob(c *gin.Context) {
+func GetCandidate(c *gin.Context) {
 	id := c.Param("id")
 	var j models.Job
 	job, err := repo.GetJob(id, j)
@@ -121,5 +114,3 @@ func GetJob(c *gin.Context) {
 		"job":   job,
 	})
 }
-
-

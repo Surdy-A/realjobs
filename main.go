@@ -22,6 +22,10 @@ func main() {
 	router.POST("/add_job", handlers.CreateJob)
 	router.GET("/jobs", handlers.GetJobs)
 	router.GET("/job_:id", handlers.GetJob)
-
+	router.GET("/candidates", handlers.CreateCandidate)
+	router.POST("/signup", handlers.SignUp)
+	router.GET("/signup", handlers.Register)
+	router.GET("/login", handlers.Login)
+	
 	router.Run(":8081")
 }
