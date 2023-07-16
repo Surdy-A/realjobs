@@ -1,12 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"realjobs/handlers"
-	"realjobs/models"
-
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -30,36 +26,38 @@ func main() {
 		})
 	})
 
-	router.GET("/jobs", func(c *gin.Context) {
-		//name := c.Param("name")
-		layout := "2006-01-02"
-		job_deadline := "2023-11-04"
-		deadline, err := time.Parse(layout, job_deadline)
-		if err != nil {
-			return
-		}
-		//date := time.Now().Format(DDMMYYYY)
+	// router.GET("/jobs", func(c *gin.Context) {
+	// 	//name := c.Param("name")
+	// 	layout := "2006-01-02"
+	// 	job_deadline := "2023-11-04"
+	// 	deadline, err := time.Parse(layout, job_deadline)
+	// 	if err != nil {
+	// 		return
+	// 	}
+	// 	//date := time.Now().Format(DDMMYYYY)
 
-		job := models.Job{Logo: "", JobTitle: "Digital Marketing Executive", Location: "Sacramento, California", JobTypes: models.JobTypes{},
-			Deadline: (deadline), Description: "Description", HowToApply: "How to Apply", Requirements: "Requirements", Experience: "3",
-			Address:        "Demo Address #8901 Marmora Road Chi Minh City, Vietnam",
-			Categories:     models.Categories{},
-			Salary:         600.700,
-			SubmissionDate: time.Now(),
-		}
+	// 	job := models.Job{Logo: "", JobTitle: "Digital Marketing Executive", Location: "Sacramento, California", JobTypes: models.JobTypes{},
+	// 		Deadline: (deadline), Description: "Description", HowToApply: "How to Apply", Requirements: "Requirements", Experience: "3",
+	// 		Address:        "Demo Address #8901 Marmora Road Chi Minh City, Vietnam",
+	// 		Categories:     models.Categories{},
+	// 		Salary:         600.700,
+	// 		SubmissionDate: time.Now(),
+	// 	}
 
-		//fmt.Println(job)
-		fmt.Println(deadline)
+	// 	//fmt.Println(job)
+	// 	fmt.Println(deadline)
 
-		c.HTML(http.StatusOK, "job_lists.html", gin.H{
-			"title": "Real Jobs",
-			"job":   job,
-		})
-	})
+	// 	c.HTML(http.StatusOK, "job_lists.html", gin.H{
+	// 		"title": "Real Jobs",
+	// 		"job":   job,
+	// 	})
+	// })
 
 	router.GET("/add_job", handlers.AddJob)
 
 	router.POST("/add_job", handlers.CreateJob)
+	router.GET("/jobs", handlers.GetJobs)
+	router.GET("/job_:id", handlers.GetJob)
 
 	router.Run(":8081")
 }

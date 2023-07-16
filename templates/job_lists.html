@@ -23,62 +23,51 @@
   <!-- inner page banner END -->
   <!-- contact area -->
   <div class="content-block">
+   
     <!-- Browse Jobs -->
     <div class="section-full bg-white browse-job content-inner-2">
       <div class="container">
+       <h5 class="widget-title font-weight-700 text-uppercase text-center">
+      Recent Jobs
+    </h5>
         <div class="row">
+          {{ range .jobs }}
           <div class="col-xl-9 col-lg-8">
-            <h5 class="widget-title font-weight-700 text-uppercase">
-            {{.job}}
-              Recent Jobs
-            </h5>
+            <br />
             <ul class="post-job-bx">
               <li>
-                <a href="#">
+                <a href="/job/{{.ID}}">
                   <div class="d-flex m-b30">
                     <div class="job-post-company">
                       <span><img src="assets/images/logo/icon1.png" /></span>
                     </div>
                     <div class="job-post-info">
-                      <h4>Digital Marketing Executive</h4>
+                      <h4>{{.JobTitle}}</h4>
                       <ul>
+                        <li><i class="fa fa-map-marker"></i> {{.Location}}</li>
+                        {{/* {{range .Categories}} */}}
+                        <li><i class="fa fa-bookmark-o"></i> {{.JobType}}</li>
                         <li>
-                          <i class="fa fa-map-marker"></i> Sacramento,
-                          California
-                        </li>
-                        <li><i class="fa fa-bookmark-o"></i> Full Time</li>
-                        <li>
-                          <i class="fa fa-clock-o"></i> Published 11 months ago
+                          {{/* {{end}} */}}
+                          <i class="fa fa-clock-o"></i> {{.SubmissionDate}}
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="d-flex">
                     <div class="job-time mr-auto">
-                      <span>Full Time</span>
+                      <span>{{.Categories}}</span>
                     </div>
                     <div class="salary-bx">
-                      <span>$1200 - $ 2500</span>
+                      <span>${{.Salary}}</span>
                     </div>
                   </div>
                   <span class="post-like fa fa-heart-o"></span>
                 </a>
               </li>
             </ul>
-            <div class="pagination-bx m-t30">
-              <ul class="pagination">
-                <li class="previous">
-                  <a href="#"><i class="ti-arrow-left"></i> Prev</a>
-                </li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li class="next">
-                  <a href="#">Next <i class="ti-arrow-right"></i></a>
-                </li>
-              </ul>
-            </div>
           </div>
+          {{ end }}
           <div class="col-xl-3 col-lg-4">
             <div class="sticky-top">
               <div class="clearfix m-b30">
