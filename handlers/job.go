@@ -11,6 +11,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func Home(c *gin.Context) {
+
+	c.HTML(http.StatusOK, "index.html", gin.H{
+		"title": "Home-RealJobs",
+	})
+}
+
 func CreateJob(c *gin.Context) {
 	logo := c.PostForm("logo")
 	job_title := c.PostForm("job_title")

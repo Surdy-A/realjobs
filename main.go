@@ -1,7 +1,6 @@
 package main
 
 import (
-	"net/http"
 	"realjobs/handlers"
 
 	"github.com/gin-gonic/gin"
@@ -18,13 +17,7 @@ func main() {
 	router.LoadHTMLGlob("templates/*")
 
 	// This handler will match /user/john but will not match /user/ or /user
-	router.GET("/", func(c *gin.Context) {
-
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"title": "Real Jobs",
-		})
-	})
-
+	router.GET("/", handlers.Home)
 	router.GET("/add_job", handlers.AddJob)
 	router.POST("/add_job", handlers.CreateJob)
 	router.GET("/jobs", handlers.GetJobs)
